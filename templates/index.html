@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %} Homepage {% endblock %}
+{% block content%}
+  <div class="container offet-2 mt-4 middlearea">
+    <div class="row">
+      <div class="col-12 col-sm12 col-md-6 col-lg-6 col-xl-6">
+        {% for submission in data: %}
+        <div class="card mb-4">
+          <img class="author_pfp" src="{{submission['pfp']}}" alt="" srcset="">
+            <p> {{submission["author"]}} </p>
+          <div class="card-body d-flex align-items-center">
+            <img class="storyphoto img-fluid" src={{ submission["img"] }} alt="">
+          </div>
+          <p> {{submission["likes"]}} likes</p>
+          <p> <b>{{submission["author"]}}</b> {{submission["title"]}} <p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock%}

@@ -1,0 +1,7 @@
+.author_pfp {
+  float: right;
+  height: 40px;
+  width: 40px;
+  border: 1px solid transparent;
+  border-radius: 60px;
+}

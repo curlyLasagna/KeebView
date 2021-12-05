@@ -1,6 +1,5 @@
-from flask import Flask, redirect, url_for, render_template
+from flask import Flask, render_template
 import reddit_data as rd
-import os
 
 app = Flask(__name__) 
 @app.route("/")
@@ -13,5 +12,4 @@ def no_page(e):
     return render_template("404.html")
 
 if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 3000))
-    app.run(debug=True, port = port, host='0.0.0.0')
+    app.run()

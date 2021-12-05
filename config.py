@@ -1,4 +1,2 @@
-TESTING = True
-DEBUG = True
-FLASK_ENV = 'development'
-STATIC_FOLDER = 'static'
+from dotenv import load_dotenv
+load_dotenv

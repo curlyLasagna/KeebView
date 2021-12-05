@@ -1,21 +1,50 @@
 {% extends "base.html" %}
 {% block title %} Homepage {% endblock %}
 {% block content%}
-  <div class="container offet-2 mt-4 middlearea">
-    <div class="row">
-      <div class="col-12 col-sm12 col-md-6 col-lg-6 col-xl-6">
-        {% for submission in data: %}
-        <div class="card mb-4">
-          <img class="author_pfp" src="{{submission['pfp']}}" alt="" srcset="">
-            <p> {{submission["author"]}} </p>
-          <div class="card-body d-flex align-items-center">
-            <img class="storyphoto img-fluid" src={{ submission["img"] }} alt="">
-          </div>
-          <p> {{submission["likes"]}} likes</p>
-          <p> <b>{{submission["author"]}}</b> {{submission["title"]}} <p>
+<div class="container mt-4 middlearea">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10">
+      {% for submission in data: %}
+      <div class="card border-light mb-5 text-white bg-dark">
+        <div class="submission_header mb-4 mt-2 mx-2">
+          <img class="author_pfp" src="{{ submission['pfp'] }}" alt="" srcset="">
+          <p> <b>{{submission["author"]}}</b> </p>
         </div>
-        {% endfor %}
+        {% if submission["img"] is iterable and submission["img"] is not string: %}
+        <div class="carousel slide" id="gallery" data-bs-ride="carousel" data-bs-interval="false">
+          <div class="carousel-inner">
+            {% for img in submission["img"]: %}
+            <div class="carousel-item active">
+              <img src={{ img }} class="d-block w-100 img-fluid" />
+            </div>
+            {% endfor %}
+            <button class="carousel-control-prev" type="button" data-bs-target="#gallery" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#gallery" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+        {% else %}
+        <img class=" d-block w-100 img-fluid" src={{ submission["img"] }} alt="">
+        {% endif %}
+        <div class="submission_icons d-flex d-row">
+          <img src="/static/icons/heart-3510.svg"></img>
+          <img src="/static/icons/message-4652.svg"></img>
+          <img src="/static/icons/send-4007.svg"></img>
+          <img src="/static/icons/bookmark-ribbon-7785.svg"></img>
+        </div>
+        <div class="submission_footer mt-4 mx-2">
+          <p> <b>{{submission["likes"]}} likes</b></p>
+          <p> <b>{{submission["author"]}}</b> {{submission["title"]}}
+          <p>
+        </div>
       </div>
+      {% endfor %}
     </div>
   </div>
+</div>
 {% endblock%}

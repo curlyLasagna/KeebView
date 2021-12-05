@@ -1,7 +1,28 @@
 .author_pfp {
-  float: right;
-  height: 40px;
-  width: 40px;
+  float: left;
+  height: 35px;
+  width: 35px;
   border: 1px solid transparent;
   border-radius: 60px;
+}
+
+.submission_header {
+  display: flex;
+  font-size: 15px;
+  justify-content: baseline;
+}
+
+.submission_header p {
+  margin-top: 5px;
+  margin-left: 4px;
+}
+
+.submission_icons {
+  height: 30px;
+  width: 30px;
+}
+
+
+body {
+  background: currentColor;
 }

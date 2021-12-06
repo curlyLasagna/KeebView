@@ -1,7 +1,6 @@
 praw.ini
 .vscode/
 .DS_Store
-Procfile
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

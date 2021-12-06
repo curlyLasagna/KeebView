@@ -1,1 +1,1 @@
-web: gunicorn app:keebView
+web: gunicorn keebView:app

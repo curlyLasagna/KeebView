@@ -32,7 +32,8 @@ def redditImageType(url):
     # Not an image return False
     return False
 
-def gallery_img(submission) -> list:
+def gallery_img(url) -> list:
+    submission = reddit_instance().submission(url=url)
     gallery = []
     for i in submission.gallery_data['items']:
         media_id = i['media_id']
@@ -68,7 +69,7 @@ def get_data (
         }
 
         if "gallery" in submission_data["img"]:
-            submission_data["img"] = gallery_img(submission)
+            submission_data["img"] = gallery_img(submission_data["img"])
 
         submissions.append(submission_data)
     return submissions
@@ -78,5 +79,4 @@ if __name__ == "__main__":
     instance = reddit_instance()
     subreddit = instance.subreddit("customkeyboards")
     # Very slow. Waits until all request are sent
-    for s in subreddit.hot(limit=1):
-        print(f'{get_submission_data(s)}')
+    print(f'{get_data()}')

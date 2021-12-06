@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Homepage {% endblock %}
+{% block title %} Keeb View {% endblock %}
 {% block content%}
 <div class="container mt-4 middlearea">
   <div class="row justify-content-center">
@@ -11,7 +11,7 @@
           <p> <b>{{submission["author"]}}</b> </p>
         </div>
         {% if submission["img"] is iterable and submission["img"] is not string: %}
-        <div class="carousel slide" id="gallery" data-bs-ride="carousel">
+        <div class="carousel slide" id="gallery{{ loop.index }}" data-bs-ride="carousel" data-bs-interval="false">
           <div class="carousel-inner">
             {% for img in submission["img"]: %}
             {% if loop.first %}
@@ -24,18 +24,19 @@
             </div>
             {% endif %}
             {% endfor %}
+            <button class="carousel-control-prev" type="button" data-bs-target="#gallery{{ loop.index }}" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#gallery{{ loop.index }}" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
           </div>
         </div>
         {% else %}
         <img class=" d-block w-100" src={{ submission["img"] }} alt="">
         {% endif %}
-        <!-- For future features -->
-        <!-- <div class="submission_icons d-flex d-row">
-          <img src="/static/icons/heart-3510.svg"></img>
-          <img src="/static/icons/message-4652.svg"></img>
-          <img src="/static/icons/send-4007.svg"></img>
-          <img src="/static/icons/bookmark-ribbon-7785.svg"></img>
-        </div> -->
         <div class="submission_footer mt-4 mx-2">
           <p> <b>{{submission["likes"]}} likes</b></p>
           <p> <b>{{submission["author"]}}</b> {{submission["title"]}}

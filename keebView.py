@@ -3,7 +3,7 @@ import reddit_data as rd
 
 app = Flask(__name__) 
 @app.route("/")
-def home_page():
+def home_page(methods=["GET"]):
     return render_template('index.html', data = rd.get_data(submission_limit = 10))
 
 # Error page

@@ -1,7 +1,14 @@
+from dotenv import load_dotenv
 import praw
+import os
+
+load_dotenv()
 
 def reddit_instance() -> praw:
-    return praw.Reddit(config_interpolation="basic")
+    return praw.Reddit(
+        client_id = os.environ.get('API_CLIENT'),
+        client_secret = os.environ.get('API_SECRET'),
+        user_agent="Gets submissions from r/customkeyboards")
 
 def redditImageType(url):
     # Code provided by: tdifilippo

@@ -1,20 +1,21 @@
 # KeebView
-COSC 175 Final Project. Gets posts from r/customkeyboards
+COSC 175 Final Project. Gets posts from r/customkeyboards through [Praw](https://github.com/praw-dev/praw)
 
-## Requirements
-| Dependency | Version |
-| ---------- | ------- |
-| Python     | 3+      |
-| Flask      | 2.0.2   |
-| praw       | 7.4.0   |
+## Python runtime
+`Python 3.9.9`   
 
-## Installation
-`$ pip install -r requirements`
+## Installing dependencies
+`$ pip install -r requirements.txt`
 
-## Environment variables
+## Flask environment variables
 `FLASK_APP=keebView`  
 `FLASK_RUN_HOST=0.0.0.0`   
 `FLASK_RUN_PORT=3000`   
+
+## Praw environment variables
+You must have a reddit account to create an app to obtain a client ID and secret  
+`CLIENT_ID`
+`CLIENT_SECRET`
 
 ## Running locally
 `$ flask run`
